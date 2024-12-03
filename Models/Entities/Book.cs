@@ -14,4 +14,3 @@ namespace Models.Entities {
         public virtual ICollection<BookCategory> BookCategories { get; set; } = new List<BookCategory>();
     }
 }
-}

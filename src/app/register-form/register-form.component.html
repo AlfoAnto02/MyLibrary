@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione - MyLibrary</title>
+    <link rel="preload" href="register-form.component.scss" as="style">
+    <link rel="stylesheet" href="register-form.component.scss">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-box">
+            <h1>Registrati a MyLibrary</h1>
+            <form>
+                <div class="input-group">
+                    <label for="name">Nome</label>
+                    <input type="text" [(ngModel)]="name" id="name" name="name" placeholder="Inserisci il tuo nome" required>
+                </div>
+                <div class="input-group">
+                    <label for="surname">Cognome</label>
+                    <input type="text" [(ngModel)]="surname" id="surname" name="surname" placeholder="Inserisci il tuo cognome" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" [(ngModel)]="email" id="email" name="email" placeholder="Inserisci la tua email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" [(ngModel)]="password" id="password" name="password" placeholder="Inserisci la tua password" required>
+                </div>
+                <button (click)="onRegister()" class="btn-register">Registrati</button>
+            </form>
+            <p class="login-prompt">
+                Hai già un account? <a routerLink="/login">Accedi qui</a>
+            </p>
+            <button routerLink="/" class="btn-home">Home</button>
+        </div>
+    </div>
+</body>
+</html>

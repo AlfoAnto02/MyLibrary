@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MyLibraryFE';
+
+  constructor(){}
+
+  load(){
+    window.addEventListener('load', () => {
+      document.body.style.visibility='visible';
+    })
+  }
 }

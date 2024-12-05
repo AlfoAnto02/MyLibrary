@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MyLibrary</title>
+    <link rel="preload" href="login-form.component.scss" as="style">
+    <link rel="stylesheet" href="login-form.component.scss">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <h1>Accedi a MyLibrary</h1>
+            <form>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" [(ngModel)]="email" id="email" name="email" placeholder="Inserisci la tua email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password" >Password</label>
+                    <input type="password" [(ngModel)]="password" id="password" name="password" placeholder="Inserisci la tua password" required>
+                </div>
+                <button (click)="onSubmit()" class="btn-login">Accedi</button>
+                <button routerLink="/" class="btn-home">Home</button>
+            </form>
+            <p class="register-prompt">
+                Non hai un account? <a routerLink="/register">Registrati qui</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

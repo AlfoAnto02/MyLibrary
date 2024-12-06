@@ -11,8 +11,8 @@ namespace MyLibrary.Controllers {
     public class UserController : ControllerBase {
 
         private readonly IUserService _userService;
-
-        public UserController(IUserService userRepository) {
+        
+        public UserController(IUserService userRepository, ITokenService tokenService) {
             _userService = userRepository;
         }
 

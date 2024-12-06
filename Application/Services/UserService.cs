@@ -42,11 +42,8 @@ namespace Application.Services {
         public async Task<User> VerifyUserAsync(LoginRequest loginRequest)
         {
             var user = await GetByEmail(loginRequest.Email);
-            if (IsPasswordValid(loginRequest.Password, user.Password))
-            {
-                return user;
-            }
-            throw new InvalidCredentialException();
+            if (!IsPasswordValid(loginRequest.Password, user.Password)) throw new WrongPasswordException();
+            return user;
         }
 
         public async Task<User> GetByEmail(string Email) {

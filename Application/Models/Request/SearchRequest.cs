@@ -13,8 +13,5 @@ namespace Application.Models.Request {
         public string BookName { get; set; } = string.Empty;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Author { get; set; } = string.Empty;
-        [JsonProperty(NullValueHandling = NullValueHandling.Include)]
-        public DateTime PublicationDate { get; set; }
-        public PaginationRequest Pagination { get; set; }
     }
 }

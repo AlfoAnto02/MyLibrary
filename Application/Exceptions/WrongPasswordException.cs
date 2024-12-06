@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Exceptions {
-    public class InvalidCredentialsException : Exception {
-        public InvalidCredentialsException() : base("Invalid email or password") { }
+    public class WrongPasswordException : Exception {
+        public WrongPasswordException() : base("The password is incorrect") { }
     }
 }

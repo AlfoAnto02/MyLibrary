@@ -12,8 +12,7 @@ namespace Models.Repositories {
         public BookRepository(MyDBContext context) : base(context) {
         }
 
-        public async Task<SearchResult<Book>> SearchBooksAsync(string categoryName, string bookName, DateTime? publicationDate, string authorName,
-            int from, int num) {
+        public async Task<SearchResult<Book>> SearchBooksAsync(string categoryName, string bookName,string authorName) {
             // Applica i filtri in base ai criteri specificati
             var query = _context.Books.AsQueryable();
             if (!string.IsNullOrEmpty(categoryName)) {
@@ -23,16 +22,11 @@ namespace Models.Repositories {
                 query = query.Where(c => c.Title.ToLower().Contains(bookName.ToLower()));
             }
 
-            if (publicationDate.HasValue && publicationDate.Value != DateTime.MinValue) {
-                query = query.Where(book => book.Publication_Date.Date == publicationDate.Value.Date);
-            }
-
             if (!string.IsNullOrEmpty(authorName)) {
                 query = query.Where(b => b.Author.ToLower().Contains(authorName.ToLower()));
             }
             var totalNum = await query.CountAsync();
-            var result = await query.Skip(from).Take(num).ToListAsync();
-            return new SearchResult<Book>(result, totalNum);
+            return new SearchResult<Book>(query.ToListAsync().Result, totalNum);
         }
 
         public async Task<SearchResult<Book>> GetBooks(int from, int num) {

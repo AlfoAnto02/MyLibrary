@@ -44,11 +44,7 @@ namespace Application.Services {
             return await _bookRepository.GetAllAsync();
         }
         public async Task<SearchResult<Book>> GetByFilterAsync(SearchRequest filter) {
-            var from = filter.Pagination.PageNumber * filter.Pagination.PageSize;
-            var num = filter.Pagination.PageSize;
-            var totalnum = filter.Pagination.totalNum;
-            var result = await _bookRepository.SearchBooksAsync(filter.CategoryName, filter.BookName, filter.PublicationDate, filter.Author,
-                from, num);
+            var result = await _bookRepository.SearchBooksAsync(filter.CategoryName, filter.BookName,filter.Author);
             return result;
         }
 

@@ -21,7 +21,7 @@ namespace MyLibrary.Controllers {
             this._bookCategoryService = _bookCategoryService;
         }
 
-        /*[HttpGet("get")]
+        [HttpGet("get")]
         public async Task<IActionResult> GetBooksAsync() {
             var booksDtos = new List<BookDTO>();
             foreach (var book in await _bookService.GetAllAsync()) {
@@ -46,7 +46,7 @@ namespace MyLibrary.Controllers {
             }catch (Exception e) {
                 return NotFound(ResponseFactory.WithError(e));
             }
-        }*/
+        }
 
         [HttpPost("add")]
         public async Task<IActionResult> AddBookAsync([FromBody] AddBookRequest bookRequest) {
@@ -86,7 +86,6 @@ namespace MyLibrary.Controllers {
             }
             var response = new GetByFilterResponse() {
                 Books = booksDtos,
-                pageSize = (int)Math.Ceiling(books.TotalNum / (decimal)filterRequest.Pagination.PageSize)
             };
             return Ok(ResponseFactory.WithSuccess(response));
         }

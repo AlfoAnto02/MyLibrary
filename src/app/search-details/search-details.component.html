@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Books</title>
+    <link rel="stylesheet" href="search-details.component.scss">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="search-container">
+  <h1>MyLibrary</h1>
+  <p>Cerca e gestisci i tuoi libri preferiti</p>
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="query"
+      (input)="onSearch()"
+      placeholder="Cerca libri..."
+    />
+    <button>
+      <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" alt="Search Icon" />
+    </button>
+  </div>
+   <!-- Messaggio di caricamento -->
+<p *ngIf="isLoading">Caricamento...</p>
+
+<!-- Messaggio di errore -->
+<p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+  <ul *ngIf="filteredBooks.length > 0">
+    <li *ngFor="let book of filteredBooks">
+      {{ book }}
+    </li>
+  </ul>
+  <p *ngIf="filteredBooks.length === 0 && query">Nessun risultato trovato</p>
+</div>
+</body>
+</html>

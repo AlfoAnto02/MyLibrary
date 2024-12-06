@@ -11,6 +11,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { ServicesComponent } from './services/services.component';
 import { SearchComponent } from './search/search.component';
 import { AddComponent } from './add/add.component';
+import { SearchDetailsComponent } from './search-details/search-details.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AddComponent } from './add/add.component';
     RegisterFormComponent,
     ServicesComponent,
     SearchComponent,
-    AddComponent
+    AddComponent,
+    SearchDetailsComponent
   ],
   imports: [
     BrowserModule,

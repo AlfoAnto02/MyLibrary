@@ -14,9 +14,9 @@
             <h1 class="section-title">Cerca un Libro</h1>
             <p class="section-description">Scegli un criterio di ricerca: autore, genere o titolo.</p>
             <div class="search-options">
-                <a href="#search-by-author" class="btn btn-primary">Cerca per Autore</a>
-                <a href="#search-by-genre" class="btn btn-secondary">Cerca per Genere</a>
-                <a href="#search-by-title" class="btn btn-success">Cerca per Titolo</a>
+                <a routerLink="/details" (click)="onAuthor()" class="btn btn-primary">Cerca per Autore</a>
+                <a routerLink="/details" (click)="onGenre()"class="btn btn-secondary">Cerca per Genere</a>
+                <a routerLink="/details" (click)="onTitle()" class="btn btn-success">Cerca per Titolo</a>
             </div>
         </div>
     </section>

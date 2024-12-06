@@ -23,7 +23,7 @@ export class LoginFormComponent {
     const loginObserver: Observer<any> = {
       next: (response) => {
         // Naviga nella struttura della risposta per ottenere il valore di "name"
-        const userName = response?.result?.result?.name;
+        const userName = response?.result?.user?.name;
           this.userService.login(userName);
           this.loginSuccess.emit(userName);
           this.router.navigate(['']);

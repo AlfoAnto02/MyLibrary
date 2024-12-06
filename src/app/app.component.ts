@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from './user-service.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,21 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'MyLibraryFE';
 
-  constructor(){}
+  userName: string | null = null;
+  isMenuOpen: boolean = false;
 
-  load(){
-    window.addEventListener('load', () => {
-      document.body.style.visibility='visible';
+  constructor(private userService: UserService){
+    this.userService.userName$.subscribe(name =>{
+      this.userName=name;
     })
+  }
+
+  onLogout() {
+    // Rimuovi i dati utente dal localStorage
+    this.userService.logout();
+  }
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen; // Cambia lo stato del menu
   }
 }

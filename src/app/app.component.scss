@@ -1,0 +1,205 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-style: normal;
+    font-family: Poppins; /* Consolidato */
+    line-height: 1.5;
+    letter-spacing: 0px;
+    text-transform: none;
+}
+
+body {
+    background-color: #ffffff;
+    color: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    color: #000;
+    margin-top: 20px;
+}
+
+.social-icons {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: #000;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+}
+
+.logo {
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    color: #020402;
+}
+
+.navbar {
+    color: #fff;
+}
+
+.navbar a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #000;
+    position: relative;
+}
+
+.navbar span{
+  color: #03b92d;
+  font-weight: 800;
+  font-size: 20px;
+  padding-right: 10px;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #28a745;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+.navbar .login-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 30px;
+    border: 2px solid #020402;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 2px;
+    color: #020402;
+    background-color: transparent;
+    transition: all 0.15s ease-in-out;
+}
+
+.login-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #000;
+    background-color: transparent;
+    border: 2px solid #000;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-btn:hover {
+    background-color: #28a745;
+    color: #fff;
+    border-color: #28a745;
+}
+.hamburger-menu {
+    display: none; /* Nascondi su desktop */
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #000;
+    z-index: 1000;
+    position: relative;
+  }
+  .hamburger-menu i {
+    font-size: 1.5rem;
+  }
+  
+  /* Menu mobile inizialmente nascosto */
+  .mobile-menu {
+    max-height: 0; /* Altezza iniziale 0 per creare l'effetto tendina */
+    overflow: hidden; /* Nascondi il contenuto */
+    transition: max-height 0.3s ease-in-out; /* Animazione apertura/chiusura */
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Altezza header */
+    right: 10px;
+    background-color: #ffffff;
+    width: 80%;
+    max-width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 0; /* Rimuovi padding iniziale */
+    z-index: 999;
+    border-radius: 8px;
+  }
+
+  .mobile-menu span{
+    color: #03b92d;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+  
+  /* Voci del menu */
+  .mobile-menu a {
+    color: #000000;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.2s ease;
+  }
+  
+  .mobile-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .mobile-menu .login-btn {
+    margin: 10px 20px;
+  }
+  
+  /* Stato attivo: menu aperto */
+  .mobile-menu.active {
+    max-height: 350px; /* Altezza sufficiente per mostrare tutte le voci */
+    padding: 10px 0; /* Aggiungi padding solo quando aperto */
+  }
+  
+  /* Responsività */
+  @media screen and (max-width: 855px) {
+    .navbar {
+      display: none; /* Nascondi menu desktop */
+    }
+  
+    .hamburger-menu {
+      display: block; /* Mostra il menu a hamburger */
+    }
+    .footer-container, .social-icons {
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -1,4 +1,50 @@
 /* Struttura principale */
+body {
+    font-family: 'Poppins';
+    background-color: #162415;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #000;
+}
+
+.login-btn {
+    border: 1px solid #000;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #000;
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
 #sb-page-structure {
     font-family: Poppins, sans-serif;
     color: #fff;
@@ -75,6 +121,31 @@
 
 .services-section .btn-primary:hover {
     background-color: #0056b3;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    color: #000;
+    margin-top: 20px;
+}
+
+.social-icons {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: #000;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: #007bff;
 }
 
 /* Mobile Responsive */

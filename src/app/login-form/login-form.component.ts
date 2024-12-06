@@ -24,7 +24,7 @@ export class LoginFormComponent {
       next: (response) => {
         // Naviga nella struttura della risposta per ottenere il valore di "name"
         const userName = response?.result?.result?.name;
-          this.userService.setUserName(userName);
+          this.userService.login(userName);
           this.loginSuccess.emit(userName);
           this.router.navigate(['']);
       },

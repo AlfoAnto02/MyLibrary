@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Application.Models.Request {
     public class CreateTokenRequest {
-        public string Email { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
+        public string userId { get; set; } = string.Empty;
+        public string userName { get; set; } = string.Empty;
+        public string surname { get; set; } = string.Empty;
+        public string email { get; set; } = string.Empty;
+
     }
 }

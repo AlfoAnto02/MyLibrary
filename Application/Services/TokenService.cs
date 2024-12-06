@@ -15,23 +15,18 @@ using System.Threading.Tasks;
 namespace Application.Services {
     public class TokenService : ITokenService {
         private readonly JwtAuthenticationOption jwtAuthenticationOption;
-        private readonly IUserService userService;
 
-        public TokenService(IOptions<JwtAuthenticationOption> jwtAuthenticationOption, IUserService userService) {
+        public TokenService(IOptions<JwtAuthenticationOption> jwtAuthenticationOption) {
             this.jwtAuthenticationOption = jwtAuthenticationOption.Value;
-            this.userService = userService;
         }
 
         public async Task<string> CreateToken(CreateTokenRequest createTokenRequest)
         {
-
-            var user = await userService.GetByEmail(createTokenRequest.Email);
-
             List<Claim> claims = new List<Claim> {
-                new Claim("user_id", user.Id.ToString()),
-                new Claim("username", user.Name),
-                new Claim("surname", user.Surname),
-                new Claim("email", user.Email)
+                new Claim("user_id", createTokenRequest.userId),
+                new Claim("username", createTokenRequest.userName),
+                new Claim("surname", createTokenRequest.surname),
+                new Claim("email", createTokenRequest.email)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtAuthenticationOption.Key));

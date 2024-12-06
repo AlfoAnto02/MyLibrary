@@ -11,9 +11,11 @@ namespace MyLibrary.Controllers {
     public class UserController : ControllerBase {
 
         private readonly IUserService _userService;
+        private readonly ITokenService _tokenService;
         
         public UserController(IUserService userRepository, ITokenService tokenService) {
             _userService = userRepository;
+            _tokenService = tokenService;
         }
 
         /* [HttpGet("get")]
@@ -58,8 +60,17 @@ namespace MyLibrary.Controllers {
         public async Task<IActionResult> LoginAsync([FromBody] LoginRequest loginRequest) {
             try {
                 var user = await _userService.VerifyUserAsync(loginRequest);
-                var userResponse = new EntityResponse<UserDTO>(){
-                    Result = new UserDTO(user)
+                var tokenRequest = new CreateTokenRequest
+                {
+                    userId = user.Id.ToString(),
+                    userName = user.Name,
+                    surname = user.Surname,
+                    email = user.Email
+                };
+                var token = await _tokenService.CreateToken(tokenRequest);
+                var userResponse = new UserResponse(){
+                    User = new UserDTO(user),
+                    Token= token
                 };
                 return Ok(ResponseFactory.WithSuccess(userResponse));
             }

@@ -14,5 +14,6 @@ export class UserService {
 
   logout(): void {
     this.userNameSource.next(null);
+    localStorage.removeItem('token');
   }
 }

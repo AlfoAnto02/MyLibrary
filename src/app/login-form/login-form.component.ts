@@ -32,9 +32,9 @@ export class LoginFormComponent {
       error: (error) => {
         const errorMessage = error?.error?.errors?.join(', ') || 'An unexpected error occurred.';
         alert('Error: ' + errorMessage);
+        localStorage.removeItem('token');
       },
       complete: () => {
-        localStorage.removeItem('token');
         console.log('Login request completed.');
       }
     };

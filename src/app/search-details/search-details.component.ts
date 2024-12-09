@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchBookService } from '../search-book.service';
+import { json } from 'express';
 
 @Component({
   selector: 'app-search',
@@ -20,6 +21,7 @@ export class SearchDetailsComponent {
   onSearch(): void {
     if (!this.query.trim()) {
       this.errorMessage = 'Inserisci un valore di ricerca.';
+      this.filteredBooks=[];
       return;
     }
 
@@ -31,7 +33,7 @@ export class SearchDetailsComponent {
     // Effettua la richiesta al backend
     this.searchService.searchBooks().subscribe({
       next: (response) => {
-        this.filteredBooks = response.books || []; // Adatta al formato di risposta del backend
+        this.filteredBooks = response?.result?.books || []; // Adatta al formato di risposta del backend
         this.isLoading = false;
 
         if (this.filteredBooks.length === 0) {

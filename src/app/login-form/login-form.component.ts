@@ -26,6 +26,7 @@ export class LoginFormComponent {
         const userName = response?.result?.user?.name;
           this.userService.login(userName);
           this.loginSuccess.emit(userName);
+          localStorage.setItem('token', response?.result?.token);
           this.router.navigate(['']);
       },
       error: (error) => {
@@ -33,6 +34,7 @@ export class LoginFormComponent {
         alert('Error: ' + errorMessage);
       },
       complete: () => {
+        localStorage.removeItem('token');
         console.log('Login request completed.');
       }
     };

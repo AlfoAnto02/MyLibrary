@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace MyLibrary.Controllers {
     [ApiController]
     [Route("api/v1/[controller]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize]
     public class CategoryController : ControllerBase {
 
         private readonly ICategoryService _categoryService;

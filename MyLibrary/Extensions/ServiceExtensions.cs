@@ -26,7 +26,7 @@ namespace MyLibrary.Extensions {
                     Title = "MyLibrary API",
                     Version = "v1"
                 });
-                c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme() {
+                /*c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme() {
                     Name = "Authorization",
                     Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
                     Scheme = "Bearer",
@@ -44,7 +44,7 @@ namespace MyLibrary.Extensions {
             },
             new string[] { }
         }
-    });
+    });*/
             });
 
             var jwtAuthenticationOption = new JwtAuthenticationOption();

@@ -22,7 +22,6 @@ namespace MyLibrary {
                     builder =>
                     {
                         builder.WithOrigins("http://localhost:4200", "https://localhost:7255")
-                            .WithHeaders("Content-Type", "Authorization")
                             .AllowAnyMethod()
                             .AllowAnyHeader();
                     });

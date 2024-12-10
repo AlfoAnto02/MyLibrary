@@ -19,4 +19,8 @@ export class AuthService {
     const registerData={name,surname,email,password};
     return this.httpClient.post(environment.url+"User/register", registerData)
   }
+
+  isLoggedIn() : boolean{
+    return localStorage.getItem('token') != null;
+  }
 }

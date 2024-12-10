@@ -25,12 +25,10 @@
                 <button routerLink="/login" class="login-btn">Login</button>
             </ng-template>
         </nav>
-        <!-- Pulsante menu hamburger -->
         <button class="hamburger-menu" aria-label="Toggle navigation" (click)="toggleMenu()">
             <i class="fas fa-bars"></i>
         </button>
     </header>
-    <!-- Menu mobile -->
     <div class="mobile-menu"  [class.active]="isMenuOpen">
         <a routerLink="/">Home</a>
         <a routerLink="/services">Services</a>

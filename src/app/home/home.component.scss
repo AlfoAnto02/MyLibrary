@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-size: 1rem;
     font-style: normal;
-    font-family: Poppins; /* Consolidato */
+    font-family: Poppins; 
     line-height: 1.5;
     letter-spacing: 0px;
     text-transform: none;
@@ -78,36 +78,36 @@ body {
     position: relative;
 }
   
-  /* Responsività */
+
   @media screen and (max-width: 768px) {
     .hero-section {
-        flex-direction: column; /* Imposta la direzione verticale su schermi piccoli */
+        flex-direction: column; 
         justify-content: center;
-        text-align: center; /* Assicura che il testo sia centrato */
+        text-align: center; 
     }
 
     .hero-section h1 {
-        font-size: 32px; /* Scala la dimensione del titolo */
-        line-height: 1.2; /* Migliora la leggibilità */
+        font-size: 32px; 
+        line-height: 1.2; 
         margin-bottom: 10px;
     }
 
     .hero-section p {
-        font-size: 18px; /* Riduce la dimensione del paragrafo */
+        font-size: 18px; 
         margin-bottom: 15px;
     }
 
     .hero-section .container .row {
-        padding: 20px 0; /* Riduce il padding verticale per schermi piccoli */
+        padding: 20px 0; 
     }
   }
 
   @media screen and (max-width: 480px) {
     .hero-section h1 {
-        font-size: 24px; /* Riduce ulteriormente il titolo su schermi molto piccoli */
+        font-size: 24px; 
     }
 
     .hero-section p {
-        font-size: 16px; /* Riduce il paragrafo su schermi molto piccoli */
+        font-size: 16px; 
     }
 }

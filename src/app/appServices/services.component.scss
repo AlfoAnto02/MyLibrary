@@ -1,4 +1,4 @@
-/* Struttura principale */
+
 body {
     font-family: 'Poppins';
     background-color: #162415;
@@ -66,7 +66,7 @@ body {
     margin-top: 10px;
 }
 
-/* Sezione Servizi */
+
 .services-section {
     display: flex;
     align-items: center;
@@ -77,13 +77,11 @@ body {
     padding: 20px;
 }
 
-/* Contenitore */
 .services-section .container {
     max-width: 960px;
     color: #fff;
 }
 
-/* Titolo e Testo */
 .services-section h1 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -95,7 +93,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* Pulsanti */
 .services-section .btn {
     padding: 15px 20px;
     font-size: 1rem;
@@ -148,7 +145,6 @@ body {
     color: #007bff;
 }
 
-/* Mobile Responsive */
 @media (max-width: 768px) {
     .services-section h1 {
         font-size: 2rem;

@@ -17,8 +17,8 @@ export class SearchBookService {
     const filterRequest = {
       [this.queryType]: this.queryData
     };
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(environment.url+"book/filterby", filterRequest,{headers});
+
+    return this.http.post(environment.url+"book/filterby", filterRequest);
   }
 
    setType(type:string):void{

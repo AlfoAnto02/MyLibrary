@@ -1,9 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { UserService } from '../user-service.service';
-import { Observer } from 'rxjs';
-import { environment } from '../../environments/environment.development';
 import { Router } from '@angular/router';
+import { UserService } from '../user-service.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -15,37 +13,28 @@ export class LoginFormComponent {
   @Output() loginSuccess = new EventEmitter<string>();
   email = '';
   password = '';
+  errorMessage: string ='';
 
-  constructor(private http: HttpClient, private userService: UserService, private router: Router) {}
+  constructor(private authService:AuthService, private userService: UserService, private router: Router) {}
 
   onSubmit() {
-    const loginData = { email: this.email, password: this.password };
-    const loginObserver: Observer<any> = {
+    console.log('Dati inviati:', { email: this.email, password: this.password });
+    this.authService.login(this.email, this.password).subscribe({
       next: (response) => {
-        // Naviga nella struttura della risposta per ottenere il valore di "name"
         const userName = response?.result?.user?.name;
-          this.userService.login(userName);
-          this.loginSuccess.emit(userName);
-          localStorage.setItem('token', response?.result?.token);
-          this.router.navigate(['']);
+        this.userService.login(userName);
+        this.loginSuccess.emit(userName);
+        localStorage.setItem('token', response?.result?.token);
+        this.router.navigate(['']);
       },
       error: (error) => {
-        const errorMessage = error?.error?.errors?.join(', ') || 'An unexpected error occurred.';
-        alert('Error: ' + errorMessage);
+        this.errorMessage = error?.error?.errors?.join(', ') || 'An unexpected error occurred.';
         localStorage.removeItem('token');
-      },
-      complete: () => {
-        console.log('Login request completed.');
       }
-    };
-  
-    console.log('Dati inviati:', loginData);
-    // Usa l'osservatore nella sottoscrizione
-    this.http.post(environment.url + 'User/login', loginData)
-      .subscribe(loginObserver);
+    });
   }
-  
+
   closeForm() {
-    this.loginSuccess.emit("Closed");
+    this.loginSuccess.emit('Closed');
   }
 }

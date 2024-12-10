@@ -22,6 +22,9 @@
                 </div>
                 <button (click)="onSubmit()" class="btn-login">Accedi</button>
             </form>
+            <div *ngIf="errorMessage" class="error-message">
+                {{errorMessage}}
+            </div>
             <p class="register-prompt">
                 Non hai un account? <a routerLink="/register">Registrati qui</a>
             </p>

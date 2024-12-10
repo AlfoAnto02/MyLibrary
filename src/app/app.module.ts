@@ -8,11 +8,11 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RegisterFormComponent } from './register-form/register-form.component';
-import { ServicesComponent } from './services/services.component';
+import { ServicesComponent } from './appServices/services.component';
 import { SearchComponent } from './search/search.component';
-import { AddComponent } from './add/add.component';
 import { SearchDetailsComponent } from './search-details/search-details.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { AddBookComponent } from './add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +22,8 @@ import { AuthInterceptor } from './auth.interceptor';
     RegisterFormComponent,
     ServicesComponent,
     SearchComponent,
-    AddComponent,
-    SearchDetailsComponent
+    SearchDetailsComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,

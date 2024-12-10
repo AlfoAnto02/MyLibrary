@@ -11,6 +11,9 @@
     <div class="register-container">
         <div class="register-box">
             <h1>Registrati a MyLibrary</h1>
+            <div *ngIf="successMessage" class = "success-message">
+                {{successMessage}}
+            </div>
             <form>
                 <div class="input-group">
                     <label for="name">Nome</label>

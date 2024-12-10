@@ -4,7 +4,7 @@
     box-sizing: border-box;
     font-size: 1rem;
     font-style: normal;
-    font-family: Poppins; /* Consolidato */
+    font-family: Poppins; 
     line-height: 1.5;
     letter-spacing: 0px;
     text-transform: none;
@@ -126,7 +126,7 @@ body {
     border-color: #28a745;
 }
 .hamburger-menu {
-    display: none; /* Nascondi su desktop */
+    display: none; 
     background: none;
     border: none;
     font-size: 24px;
@@ -139,21 +139,21 @@ body {
     font-size: 1.5rem;
   }
   
-  /* Menu mobile inizialmente nascosto */
+
   .mobile-menu {
-    max-height: 0; /* Altezza iniziale 0 per creare l'effetto tendina */
-    overflow: hidden; /* Nascondi il contenuto */
-    transition: max-height 0.3s ease-in-out; /* Animazione apertura/chiusura */
+    max-height: 0;
+    overflow: hidden; 
+    transition: max-height 0.3s ease-in-out; 
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 60px; /* Altezza header */
+    top: 60px;
     right: 10px;
     background-color: #ffffff;
     width: 80%;
     max-width: 300px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 0; /* Rimuovi padding iniziale */
+    padding: 0; 
     z-index: 999;
     border-radius: 8px;
   }
@@ -165,7 +165,7 @@ body {
     padding: 10px 20px;
   }
   
-  /* Voci del menu */
+ 
   .mobile-menu a {
     color: #000000;
     text-decoration: none;
@@ -183,20 +183,20 @@ body {
     margin: 10px 20px;
   }
   
-  /* Stato attivo: menu aperto */
+  
   .mobile-menu.active {
-    max-height: 350px; /* Altezza sufficiente per mostrare tutte le voci */
-    padding: 10px 0; /* Aggiungi padding solo quando aperto */
+    max-height: 350px;
+    padding: 10px 0; 
   }
   
   /* Responsività */
   @media screen and (max-width: 855px) {
     .navbar {
-      display: none; /* Nascondi menu desktop */
+      display: none;
     }
   
     .hamburger-menu {
-      display: block; /* Mostra il menu a hamburger */
+      display: block; 
     }
     .footer-container, .social-icons {
         flex-direction: column;

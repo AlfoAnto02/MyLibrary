@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './user-service.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,11 +21,10 @@ export class AppComponent {
   }
 
   onLogout() {
-    // Rimuovi i dati utente dal localStorage
     this.userService.logout();
   }
 
   toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen; // Cambia lo stato del menu
+    this.isMenuOpen = !this.isMenuOpen; 
   }
 }

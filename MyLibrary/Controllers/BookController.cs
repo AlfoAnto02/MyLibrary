@@ -3,13 +3,14 @@ using Application.Factories;
 using Application.Models.DTOs;
 using Application.Models.Request;
 using Application.Models.Responses;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MyLibrary.Controllers {
     [ApiController]
     [Route("api/v1/[controller]")]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class BookController : ControllerBase {
 
         public readonly IBookService _bookService;

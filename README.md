@@ -1,66 +1,170 @@
-# **MY LIBRARY**
+# MY LIBRARY
 
-## *Che cos'è?*
-My library è un'applicazione web composta da un backend in .NET e un frontend in Angular. Lo scopo di quesa applicazione è di permettere ad utenti 
-verificati di poter aggiungere ed ottenere informazioni riguardanti libri in una sorta di biblioteca digitale.
+## Overview
+**My Library** is a web application designed to serve as a digital library. It allows verified users to add and retrieve information about books within a digital library environment. The application consists of a backend built on the .NET Framework and a frontend developed with Angular. It offers a robust set of features, including user authentication, book management, and dynamic search capabilities.
 
-## *Tecnologie utilizzate*
+---
 
-### *Lato Backend*
+## Table of Contents
+- [Overview](#overview)
+- [Technologies Used](#technologies-used)
+  - [Backend](#backend)
+  - [Frontend](#frontend)
+- [Backend Functionality](#backend-functionality)
+  - [Architecture](#architecture)
+  - [Authentication](#authentication)
+- [Frontend Functionality](#frontend-functionality)
+  - [Components](#components)
+  - [Services](#services)
+- [Installation and Setup](#installation-and-setup)
+- [Usage](#usage)
+- [License](#license)
+- [Contact](#contact)
 
-- .NET FRAMEWORK
--  Swagger UI per il testing degli endpoint lato backend
--  JWT Authentication per gli endpoint
--  My Sql Management Studio Database per immagazzinare i Dati
+---
 
-### *Lato frontend*
-- NodeJS
-- Angular
-- Express JS
-- NoDemon
-- BootStrap
+## Technologies Used
+
+### Backend
+- **.NET Framework**: Core framework for developing the backend.
+- **Swagger UI**: For testing and documenting backend API endpoints.
+- **JWT Authentication**: Ensures secure access to the API endpoints.
+- **MySQL Management Studio**: Used as the database for storing application data.
+
+### Frontend
+- **NodeJS**: Runtime environment for the frontend build tools.
+- **Angular**: Framework for building the single-page application.
+- **Express JS**: Used for serving the frontend and handling API proxy requests if needed.
+- **Nodemon**: Utility for automatically restarting the server during development.
+- **Bootstrap**: Provides responsive design and styling.
+
+---
+
+## Backend Functionality
+
+### Architecture
+The backend is organized into three main modules:
+
+1. **Module Layer**  
+   Responsible for setting up and populating the database. This layer defines all the model elements and the rules for data storage.
+
+2. **Application Layer**  
+   Contains all the services required for the application's business logic. Key services include:
+   - **BookService**
+   - **CategoryService**
+   - **BookCategoryService**
+   - **UserService**
+   - **TokenService**
+
+3. **Web Layer**  
+   Provides the controllers and endpoints that allow external users to interact with the system.
+
+**Data Models**  
+The application manages three main entities:
+- **Users**
+- **Books**
+- **Categories**
+
+Each book must be associated with at least one category, though a book can belong to multiple categories. The application enforces strict rules for data entry, such as:
+- Validating email addresses using regular expressions.
+- Enforcing a minimum password length of 8 characters, which must include a special character, a number, and an uppercase letter.
+- Preventing the insertion of duplicate books or categories.
+
+### Authentication
+The web layer requires users to log in before performing any data modifications or retrieval. The login process generates a JWT (JSON Web Token) valid for 30 minutes. This token must be included in the authorization header for all secured API requests.
+
+---
+
+## Frontend Functionality
+
+The frontend is developed using Angular and provides a user-friendly interface with the following features:
+
+### Components
+1. **AppComponent**  
+   Serves as the main layout component featuring a navigation bar, a footer, and a router outlet to navigate between pages.
+
+2. **HomeComponent**  
+   The main landing page that welcomes users and prompts them to log in to access the services.
+
+3. **LoginComponent**  
+   Presents a login form where users can enter their credentials. This component communicates with the backend via a dedicated service to validate the input. Upon successful login, the user's name is displayed on the Home page.
+
+4. **RegisterComponent**  
+   Accessible from the Login page for users who do not have an account. This component provides a registration form requiring details such as first name, last name, email, and password. It communicates with the backend to create a new user account and redirects to the login page upon successful registration.
+
+5. **AppServiceComponent**  
+   Lists the services available within the application, such as searching for a book and adding a new book.
+
+6. **AddBookComponent**  
+   Provides a form to add a new book to the system. On initialization, it fetches the list of available categories from the backend so users can select one or more categories when adding a book.
+
+7. **SearchComponent**  
+   Offers filtering options for book searches. Users can choose to search by author name, book title, or genre.
+
+8. **SearchDetailsComponent**  
+   Enables detailed book searches based on the selected filters. It dynamically retrieves and displays books matching the entered criteria, showing details such as title, author, and genres.
+
+### Services
+1. **UserService**  
+   Manages login and logout functionalities. It sets the username upon successful login and removes the token upon logout.
+
+2. **SearchCategoriesService**  
+   Handles the retrieval of available book categories from the backend.
+
+3. **SearchBookService**  
+   Facilitates querying the backend to retrieve books that match the search criteria.
+
+4. **AuthService**  
+   Manages authentication tasks, including login and registration processes, by interacting with the respective backend endpoints.
+
+5. **Interceptor**  
+   Intercepts HTTP requests to append the JWT token in the authorization header, ensuring that subsequent API calls are authenticated.
+
+---
+
+## Installation and Setup
+
+### Prerequisites
+- [.NET Framework](https://dotnet.microsoft.com/) installed on your system.
+- [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) for frontend dependencies.
+- [MySQL](https://www.mysql.com/) for the database.
+
+### Backend Setup
+1. Clone the repository.
+   ```bash
+   git clone <repository-url>
+2. Open the solution in your preferred .NET IDE.
+
+3. Restore the NuGet packages.
+
+4. Configure the connection string for MySQL in the application settings.
+
+5. Run the backend application using your IDE or via command line.
+
+---
+
+## Usage
+
+### User Authentication
+Users must log in to access the full functionality of the application. Upon logging in, a JWT token is generated and used to authorize further API calls.
+
+### Adding a Book
+Navigate to the "Add Book" section, fill in the required details (including selecting at least one category), and submit the form to add a new book to the digital library.
+
+### Searching for Books
+Use the search components to filter and retrieve books based on title, author, or category. The search interface updates dynamically as you type.
+
+---
+
+## License
+This project is licensed under the MIT License.
+
+---
+
+## Contact
+For any questions or further information, please contact:
+
+- Email: al.antognozzicaraffa@studenti.unicam.it
 
 
-## *Funzionamento Backend*
-Il lato backend di questa applicazione web è caratterizzato da una struttura divisa in 3 Moduli:
 
-1. Module Layer => Strato di riferimento per l'impostazione e il popolamento del database. Qui vengono definiti tutti gli elementi di modello con le regole per l'immagazzinamento dei dati
-2. Application Layer => Strato dei servizi. Qui vengono definiti tutti i servizi necessari per il funzionamento dell'applicativo lato backend. In particolar modo, BookService, CategoryService, BookCategoryService, UserService e TokenService
-3. Web Layer => Strato web dove vengono definiti i controller e gli endpoint per poter poi permettere all'utente esterno di interagire con il nostro sistema.
-
-Gli elementi di modello dell'applicativo sono 3: Gli utenti, i libri e le categorie. Ogni libro deve avere almeno una categoria per essere definito come tale. Un libro può avere più categorie. 
-
-Nello strato applicativo vengono descritte anche regole rigide per il popolamento del database. Tra queste abbiamo: Verifica che l'indirizzo email sia valido attraverso regex, verifica della lunghezza della password di almeno 8 caratteri + carattere speciale + numero + Maiuscola.
-Sono stati inseriti anche controlli per quanto riguarda l'inserimento di libri già esistenti o di cateogorie già esistenti.
-
-### *Autenticazione*
-Il lato web dell'applicativo impone un'ulteriore verifica per l'inserimento di dati nel database oppure per poter fare data retrieve. Attraverso un sistema di Login impone all'utente di loggarsi per poter generare un token Jwt valido per 30 minuti utilizzato come intestazione di Autorizzazione
-per poter eseguire le chiamate negli endpoint definiti nel lato WEB
-
-## *Funzionamento FrontEnd*
-
-Il Frontend è stato sviluppato utilizzando Angular. Esso si presenta con una schermata Home di benvenuto dove sarà possibile eseguire un login. Il login è obbligatorio per poter accedere alle funzionalità attraverso il pulsante Services. 
-
-### *Componenti e Servizi*
-
-Le componenti principali utilizzate sono le seguenti: 
-1. AppComponent => Utilizzata per descrivere un layout predefinito delle altre componenti; caratterizzato da una navigation bar superiore e da un footer. All'interno abbiamo un router-outlet utilizzato per accedere alle altre rotte
-2. HomeComponent => Componente utilizzato come schermata home Principale. Esso invita l'utente a loggarsi e ad usufruire dei servizi dell'applicativo
-3. LoginComponent => Component utilizzato per presentare una form di Login. Esso permette di inserire nome utente e password e attraverso il component.service.ts comunica con il backend per verificare che i dati inseriti siano valido. Se validi, ritorna il nome utente che apparirà
-nella schermata home.
-4. RegisterComponent => Collegato al Login component attraverso un bottone vi è il register component (nel caso in cui non is abbia un account). Qui viene presentata una form per la registrazione come nome, cognome, email e password. Il component.ts comunica con il backend
-per effettuare la registrazione e, se eseguita con successo, ritorna alla schermata di login.
-5. AppServiveComponent => Componente utilizzato per elencare i servizi resi disponibili dall'applicativo. Questi servizi sono la ricerca di un libro e l'aggiunta di un libro.
-6. AddBookComponent => Componente per l'aggiunta di un libro. Qui viene presentata una form per l'inserimento di un libro corrispondente all'oggetto richiesto lato BackEnd quando si richiama l'endpoint con il submit.
-Una parte importante di questo Component è la funzione OnInit() definita nel .ts utilizzata per presentare all'utente tutte le categorie selezionabili presenti nel database. Infatti, appena richiamata la pagina. La funzione OnInit comunica con il Backend per presentare all'utente
-tutte le categorie attualmente selezionabili.
-7. SearchComponent => Componente di ricerca in cui vengono presentati i possibili filtri applicabili per la ricerca dei libri. Qui l'utente deve decidere se vuole effettuare una ricerca per nome dell'Autore, titolo del libro o per genere.
-8. SearchDetailsComponent => Componente di ricerca dettagliato in cui è possibile ricercare effettivamente il libro in base al filtro applicato. Qui si possono digitare dei caratteri nella barra di ricerca e vengono presentati dei libri corrispondenti ai caratteri inseriti.
-Il component.ts esegue una chiamata di ricerca verso il database ogni volta che il contenuto della searchBar cambia. All'interno della finestra di ricerca vengono presentati i libri con le seguenti caratteristiche: Titolo, Autore e Generi.
-
-I servizi utilizzati a sostegno della logica del frontend sono:
-1. UserService.ts => Servizio richiamato quando si esegue il Login o il Logout dall'applicativo. Imposta il nome come il nome utente corrispondente all'account in caso di login e rimuove il token in caso di logout.
-2. SearchCategoriesService.cs => Servizio utilizzato per eseguire la chiamata al Backend per fara data retrieve delle categorie disponibili.
-3. SearchBookService.ts => Servizio utilizzato per eseguire la query di ricerca verso il backend e fare data retrieve dei libri corrispondenti.
-4. AuthService.ts => Servizio utilizzato per eseguire login e register sulla piattaforma. Inoltre le richieste di login e register ai rispettivi endpoint.
-5. Interceptor.ts => Interceptor collegato alla funzione di login. Esso intercetta il token jwt e lo inserisce come header di autorizzazione per le successive chiamate.
